@@ -48,8 +48,8 @@ router.post('/send', async (req, res) => {
     const { uuid, emailTo, emailFrom } = req.body;
 
     //Validate request
-    if (!uuid || !emailTo || !emailFrom) {
-        return  res.status(422).send({error: 'All fields are required.'})
+    if (!uuid || !emailTo || !emailFrom || typeof uuid !== 'string') {
+        return  res.status(422).send({error: 'All valid fields are required.'})
     }
 
     //Get data from database
